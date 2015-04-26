@@ -12,7 +12,7 @@ let classNameFromFilename = (filename) => {
 let reexportHotVersionSnippet = (className) => `
   console.log("Hot reloading ${className}!")
   import ReactMount from 'react/lib/ReactMount'
-  import reactHotApi from 'react-hot-api'
+  import reactHotApi from 'github:gaearon/react-hot-api@0.4.3'
   if (!window.__jsxHot) window.__jsxHot = {}
   if (!__jsxHot.${className}) __jsxHot.${className} = reactHotApi(_ => ReactMount._instancesByReactRootID)
   let hotted = __jsxHot.${className}(${className})
