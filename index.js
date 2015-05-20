@@ -10,12 +10,14 @@ let classNameFromFilename = (filename) => {
   return pascalCase(path.basename(filename,path.extname(filename)))
 }
 let reexportHotVersionSnippet = (className) => `
-  import ReactMount from 'react/lib/ReactMount'
-  import reactHotApi from 'github:gaearon/react-hot-api@0.4.3'
-  if (!window.__jsxHot) window.__jsxHot = {}
-  if (!__jsxHot.${className}) __jsxHot.${className} = reactHotApi(_ => ReactMount._instancesByReactRootID)
-  let hotted = __jsxHot.${className}(${className})
-  export {hotted as default}
+  import __React from 'react'
+  import __ReactMount from 'react/lib/ReactMount'
+  import __reactHotApi from 'github:gaearon/react-hot-api@0.4.3'
+  if (typeof ${className} !== "undefined" && ${className}.prototype instanceof __React.Component) {
+    if (!window.__jsxHot) window.__jsxHot = {}
+    if (!__jsxHot.${className}) __jsxHot.${className} = __reactHotApi(_ => __ReactMount._instancesByReactRootID)
+    let hotted = __jsxHot.${className}(${className})
+  }
 `
 
 export let translate = load => {
