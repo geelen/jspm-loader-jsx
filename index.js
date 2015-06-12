@@ -6,14 +6,13 @@ import reactHotApi from 'react-hot-api'
 import path from 'path'
 import pascalCase from 'pascal-case'
 
-let classNameFromFilename = (filename) => {
-  return pascalCase(path.basename(filename,path.extname(filename)))
+let classNameFromFilename = ( filename ) => {
+  return pascalCase( path.basename( filename, path.extname( filename ) ) )
 }
-let reexportHotVersionSnippet = (className) => `
+let reexportHotVersionSnippet = ( className ) => `
   import __React from 'react'
   import __ReactMount from 'react/lib/ReactMount'
   import __reactHotApi from 'github:gaearon/react-hot-api@0.4.3'
-  let __hotReload
   if (typeof ${className} !== "undefined" && ${className}.prototype instanceof __React.Component) {
     if (!window.__jsxHot) window.__jsxHot = {}
     if (!__jsxHot.${className}) __jsxHot.${className} = __reactHotApi(_ => __ReactMount._instancesByReactRootID)
@@ -22,12 +21,11 @@ let reexportHotVersionSnippet = (className) => `
   } else {
     __hotReload = true
   }
-  export { __hotReload };
 `
 
 export let translate = load => {
-  let snippet = BUILD_MODE ? '' : reexportHotVersionSnippet(classNameFromFilename(load.metadata.pluginArgument)),
-    output = reactTools.transformWithDetails(snippet + load.source, {es6module: true})
+  let snippet = BUILD_MODE ? '' : reexportHotVersionSnippet( classNameFromFilename( load.metadata.pluginArgument ) ),
+    output = reactTools.transformWithDetails( 'export let __hotReload;' + load.source + snippet, { es6module: true } )
   load.source = output.code;
   load.metadata.sourceMap = output.sourceMap;
 }
