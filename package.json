@@ -1,12 +1,36 @@
 {
   "main": "index",
   "registry": "jspm",
-  "version": "0.1.1",
+  "version": "0.0.1",
   "dependencies": {
     "react": "npm:react@^0.13.1",
     "react-tools": "npm:react-tools@^0.13.1",
     "react-hot-api": "github:gaearon/react-hot-api@0.4.3",
     "path": "github:jspm/nodelibs-path@^0.1.0",
     "pascal-case": "npm:pascal-case@^1.1.0"
-  }
+  },
+  "name": "jspm-loader-jsx",
+  "description": "> A hot-reloading JSX plugin for JSPM",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/geelen/jspm-loader-jsx.git"
+  },
+  "keywords": [
+    "jspm",
+    "loader",
+    "plugin",
+    "systemjs",
+    "jsx",
+    "live-reload",
+    "jspm-server"
+  ],
+  "author": "Glen Maddern",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/geelen/jspm-loader-jsx/issues"
+  },
+  "homepage": "https://github.com/geelen/jspm-loader-jsx"
 }
