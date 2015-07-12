@@ -1,6 +1,5 @@
 const BUILD_MODE = typeof window === 'undefined'
 
-import reactTools from 'react-tools'
 import ReactMount from 'react/lib/ReactMount'
 import reactHotApi from 'react-hot-api'
 import path from 'path'
@@ -24,10 +23,8 @@ let reexportHotVersionSnippet = ( className ) => `
 `
 
 export let translate = load => {
-  let snippet = BUILD_MODE ? '' : reexportHotVersionSnippet( classNameFromFilename( load.metadata.pluginArgument ) ),
-    output = reactTools.transformWithDetails( 'export let __hotReload;' + load.source + snippet, { es6module: true } )
-  load.source = output.code;
-  load.metadata.sourceMap = output.sourceMap;
+  let snippet = BUILD_MODE ? '' : reexportHotVersionSnippet( classNameFromFilename( load.metadata.pluginArgument ) );
+  load.source = `export let __hotReload; ${load.source} ${snippet}`;
 }
 
 export let hotReload = module => {
