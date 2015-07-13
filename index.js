@@ -13,21 +13,19 @@ let reexportHotVersionSnippet = ( className ) => `
   import __ReactMount from 'react/lib/ReactMount'
   import __reactHotApi from 'github:gaearon/react-hot-api@0.4.3'
 
-  export let __hotReload
-
   if (typeof ${className} !== "undefined" && ${className}.prototype instanceof __React.Component) {
     if (!window.__jsxHot) window.__jsxHot = {}
     if (!__jsxHot.${className}) __jsxHot.${className} = __reactHotApi(_ => __ReactMount._instancesByReactRootID)
     let hotted = __jsxHot.${className}(${className})
-    __hotReload = () => false
+    __hotReload = typeof __hotReload === "undefined" ? () => false : __hotReload
   } else {
-    __hotReload = true
+    __hotReload = typeof __hotReload === "undefined" ? true : __hotReload
   }
 `
 
 export default {
   translate( load ) {
     let snippet = BUILD_MODE ? '' : reexportHotVersionSnippet( classNameFromFilename( load.metadata.pluginArgument ) );
-    load.source = `${load.source} ${snippet}`;
+    load.source = `export let __hotReload; ${load.source} ${snippet}`;
   }
 }
