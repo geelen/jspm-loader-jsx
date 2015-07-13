@@ -11,6 +11,14 @@ jspm-server
 Then in your application:
 
 ```js
+// config.js - ensure you have the following
+System.config({
+  babelOptions: {
+    blacklist: []
+  }
+});
+```
+```js
 // main.js
 import MyComponent from 'my-component.jsx!'
 ```
@@ -22,7 +30,7 @@ export default MyComponent extends React.Component {
 }
 ```
 
-**Note:** this plugin only works with ES6 JSX files.  Also, in your `System.js` config file, you must have `babelOptions: { blacklist: [] }`, since JSX transpilation is disabled by default.
+**Note:** this plugin only works with ES6 JSX files.  And be sure your `System.js` has `babelOptions: { blacklist: [] }`, since JSX transpilation is disabled by default.
 
 ## To use JSX live-reload
 
