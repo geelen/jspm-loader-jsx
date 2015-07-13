@@ -22,7 +22,7 @@ export default MyComponent extends React.Component {
 }
 ```
 
-**Note:** this plugin only works with ES6 JSX files.
+**Note:** this plugin only works with ES6 JSX files.  Also, in your `System.js` config file, you must have `babelOptions: { blacklist: [] }`, since JSX transpilation is disabled by default.
 
 ## To use JSX live-reload
 
