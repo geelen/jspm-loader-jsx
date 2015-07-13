@@ -25,13 +25,9 @@ let reexportHotVersionSnippet = ( className ) => `
   }
 `
 
-export let translate = load => {
-  let snippet = BUILD_MODE ? '' : reexportHotVersionSnippet( classNameFromFilename( load.metadata.pluginArgument ) );
-  load.source = `${load.source} ${snippet}`;
-}
-
-export let hotReload = module => {
-  // Noop here either. This only runs on the updated modules, not on
-  // the first one, and the react-hot-reloader needs to be injected
-  // from the very beginning.
+export default {
+  translate( load ) {
+    let snippet = BUILD_MODE ? '' : reexportHotVersionSnippet( classNameFromFilename( load.metadata.pluginArgument ) );
+    load.source = `${load.source} ${snippet}`;
+  }
 }
