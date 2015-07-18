@@ -1,7 +1,7 @@
 {
   "main": "index",
   "registry": "jspm",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "dependencies": {
     "gaearon/react-hot-api": "github:gaearon/react-hot-api@^0.4.5",
     "pascal-case": "npm:pascal-case@^1.1.1",
