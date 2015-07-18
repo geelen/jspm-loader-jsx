@@ -3,6 +3,8 @@
   "registry": "jspm",
   "version": "0.0.3",
   "dependencies": {
+    "pascal-case": "^1.1.1",
+    "react": "^0.13.3"
   },
   "name": "jspm-loader-jsx",
   "description": "> A hot-reloading JSX plugin for JSPM",
