@@ -11,7 +11,7 @@ let classNameFromFilename = ( filename ) => {
 let reexportHotVersionSnippet = ( className ) => `
   import __React from 'react'
   import __ReactMount from 'react/lib/ReactMount'
-  import __reactHotApi from 'github:gaearon/react-hot-api@0.4.3'
+  import __reactHotApi from 'github:gaearon/react-hot-api@0.4.5'
 
   if (typeof ${className} !== "undefined" && ${className}.prototype instanceof __React.Component) {
     if (!window.__jsxHot) window.__jsxHot = {}
