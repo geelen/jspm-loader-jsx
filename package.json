@@ -1,7 +1,7 @@
 {
   "main": "index",
   "registry": "jspm",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "name": "jspm-loader-jsx",
   "description": "> A hot-reloading JSX plugin for JSPM",
   "scripts": {
